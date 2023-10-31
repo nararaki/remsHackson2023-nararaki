@@ -1,19 +1,36 @@
 <!DOCTYPE html>
-<html>
-    
-<body>
-    <p>helloworld</p>
-    <p>
-    <input id = "nameinput"type = "text" placeholder = "名前入力"></input>
-    </p>
-    <p>
-        <input id = "passwdinput" type = "text" placeholder = "パスワード"></input>
-        <button id = "passwdbutton">そうしん</button>
-    </p>
-    <p>
-        <input id = "iotnumber" type = "text" placeholder="機器のid"></input>
-    </p>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>ログイン画面</title>
+        <link href="form.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head> 
+    <body>
+        <form>
+            <p class="fsize"> ログイン画面</p>
+            <dl>
+                <dt>名前を記入してください</dt>
+                <dd>
+                    <label>名前<input type="text" id = "nameinput" required class="form"></label>
+                </dd>
+                <!-- <dt>メールアドレスを入力してください</dt> -->
+                <!-- <dd> -->
+                    <!-- <label>メール<input type="email" name="your-email" required></label> -->
+                <!-- </dd> -->
+                <dt>パスワードを入力してください</dt>
+                <dd>
+                    <label class="form">パスワード<input type="password" id = "passwdinput" required></label>
+                </dd>
+                <dt>機器のidを入力してください</dt>
+                <dd>
+                    <label class="form">機器のid<input type="text" id = "iotnumber" required></label>
+                </dd>
+                <button type="submit" id = "passwdbutton">送信</button>
+            </dl>
+        </form>
+
     </body>
     <script src = "./index.js"></script>
-
-</html>    
+</html>
