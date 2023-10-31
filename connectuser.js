@@ -4,7 +4,7 @@ const app = express();
 var userId;
 var passwd;
 var IotId;
-var  _isopen;
+var  _isopen=true;
 var idFromIot;
 // require('mysql2')でコールバック関数を使う方法だと動かなかった
 var mysql = require('mysql2/promise');
@@ -67,9 +67,12 @@ app.post('/postIotdata',(req,res)=>{
 });
 app.get('/getdata',(req,res)=>{
     if(Iotinfo.id == userInfo.userId){
-    res.send(Iotinfo._isopen);
-    console.log(Iotinfo._isOpen);
+    res.send(Iotinfo.statusIsOpen);
+    console.log(Iotinfo.statusIsOpen);
+    } else {
+      console.log("一致しませんでした。");
     }
+
 });
 app.listen(5000,()=>{
 console.log("ServerStarted");
