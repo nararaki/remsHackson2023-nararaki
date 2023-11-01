@@ -18,6 +18,7 @@ postpassid(userdata);
 nameinput.value = '';
 passwdinput.value = '';
 Iotinput.value = '';
+goHome();
 });
 function postpassid(userdata){
     return fetch(baseurl,{
@@ -29,3 +30,19 @@ headers: {
     });
 }
 
+async function goHome() {
+    try {
+      const response = await fetch('http://localhost:5000/goHome');
+      if (!response.ok) {
+        console.error('サーバーエラー:', response.statusText);
+        return;
+      }
+      const data = await response.json();
+      console.log('取得したデータ:', data);
+      if (data) {
+        window.location.href = 'home.html';
+      }
+    } catch (error) {
+      console.error('エラーが発生しました:', error);
+    }
+  }

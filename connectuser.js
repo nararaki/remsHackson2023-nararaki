@@ -58,6 +58,7 @@ app.get('/',(req,res)=>{
 app.post('/regislation.html',(req,res)=>{
     userInfo.userId = req.body.nameinput;
     userInfo.passwd = req.body.passwd;
+    userInfo.IotId = req.body.Iotid;
 console.log(userInfo);
 });
 app.post('/postIotdata',(req,res)=>{
@@ -74,6 +75,15 @@ app.get('/getdata',(req,res)=>{
     }
 
 });
+app.get('/goHome',(req,res)=>{
+  if(userInfo.IotId == 1) {
+    res.send(true);
+    console.log("一致しました");
+  } else {
+    res.send(false);
+    console.log("一致しませんでした");
+  }
+})
 app.listen(5000,()=>{
 console.log("ServerStarted");
 });
