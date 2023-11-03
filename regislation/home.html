@@ -1,28 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
+<meta charset="UTF-8">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>データ取得テスト</title>
+  <title>通知画面</title>
+  <script src="home.js" defer></script>
 </head>
 <body>
-  <button onclick="getData()">データを取得</button>
-
-  <script>
-    async function getData() {
-      try {
-        const response = await fetch('http://localhost:5000/getdata');
-        if (!response.ok) {
-          console.error('サーバーエラー:', response.statusText);
-          return;
-        }
-        const data = await response.text();
-        console.log('取得したデータ:', data);
-      } catch (error) {
-        console.error('エラーが発生しました:', error);
-      }
-    }
-  </script>
+  <h1>以下のボタンを押して通知を開始</h1>
+  <button id="subscribe"></button>
+  
 </body>
 </html>
