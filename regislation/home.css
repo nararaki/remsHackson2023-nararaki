@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+div {
+    font-family: "Dela Gothic One";
+}
+
+
+.center-btn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 25vh;
+    font-family: "Dela Gothic One";
+  }
+
+h3 {
+    text-align: center;
+    margin: auto;
+    margin-top: 10vh;
+}
