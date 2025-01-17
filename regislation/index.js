@@ -1,31 +1,50 @@
-const baseurl = "http://localhost:5000/regislation.html";
+const baseurl = "http://localhost:5000/register";
+const geturl = "http://localhost:5000/ischangeurl";
+const isopenurl = "http://localhost:5000/login.html";
 var count = 0;
-const passwdbutton = document.getElementById('passwdbutton');
-const passwdinput = document.getElementById('passwdinput');
-const nameinput = document.getElementById('nameinput');
-const Iotinput = document.getElementById('iotnumber');
-passwdbutton.addEventListener('click',()=>{
-count++;
-const username = nameinput.value;
-const userpasswd = passwdinput.value;
-const Iotnumber = Iotinput.value;
-const userdata = {
+const passwdbutton = document.getElementById("passwdbutton");
+const passwdinput = document.getElementById("passwdinput");
+const nameinput = document.getElementById("nameinput");
+const iotnumber = document.getElementById("iotnumber");
+let _istranssite = false;
+passwdbutton.addEventListener("click", async () => {
+  count++;
+  const username = nameinput.value;
+  const userpasswd = passwdinput.value;
+  const Iotnumber = iotnumber.value;
+  const userdata = {
+    number: count,
     nameinput: username,
     passwd: userpasswd,
     Iotid: Iotnumber,
-};
-postpassid(userdata);
-nameinput.value = '';
-passwdinput.value = '';
-Iotinput.value = '';
+  };
+  await postpassid(userdata);
+  const body = await isidcorrect();
+  console.log(body);
+  _istranssite = body.isIdJudge;
+  console.log(body.isIdJudge);
+  if (_istranssite) {
+    window.location.href = isopenurl;
+  } else {
+    alert("そのiotidは存在していません");
+  }
+  //console.log(responce);
+  nameinput.value = "";
+  passwdinput.value = "";
+  iotnumber.value = "";
 });
-function postpassid(userdata){
-    return fetch(baseurl,{
-method:'POST',
-body: JSON.stringify(userdata),
-headers: {
-    "Content-Type": "application/json",
-  },
-    });
+async function postpassid(userdata) {
+  await fetch(baseurl, {
+    method: "POST",
+    body: JSON.stringify(userdata),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  //console.log("yes");
 }
-
+async function isidcorrect() {
+  const response = await fetch(geturl);
+  const body = await response.json();
+  return body;
+}

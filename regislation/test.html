@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Home</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="script.js"></script>
+</head>
+
+<body id="body">
+  <input type="text" placeholder="やること書く" id="inputToDo"></input>
+  <input type="button" value="Add" id="Add-to-do"></input>
+  <div id="todolist"></div>
+  <div id="isOpen"></div>
+  <script>
+    // const cookies=document.cookie.split(";")
+    // const session=cookies.find((e)=>e.startsWith("session"))
+    // const sessionKeyValue=session.split("=")
+    // alert(sessionKeyValue[1])
+    const isOpen = document.getElementById("isOpen");
+    setInterval(async () => {
+      const res = await fetch("/getData");
+      json = await res.json();
+      if (json.statusIsOpen) {
+        isOpen.innerText = "Open";
+      } else {
+        isOpen.innerText = "Close";
+      }
+
+    }, 1000)
+  </script>
+</body>
+
+</html>
