@@ -8,7 +8,7 @@ const mysql = require("mysql2");
 const connection = mysql.createConnection({
   host: "localhost",
   user: "nararaki",
-  password: "#An37knaP",
+  password: "",
   database: "test_db",
 });
 connection.connect(function (error) {
@@ -162,11 +162,11 @@ app.get("/goHome", (req, res) => {
 });
 const vapidKeys = {
   publicKey:
-    "BO_glaA1_q1M05BzimTDE33ao2zVXNB6C3nx7OMwpgM7Qrg_uSEkjwxjbx6i7J_gd-k-mdyyEdrZzm2vZ_jrqS0",
-  privateKey: "mL4c2H5R1OU1NUp5n4WzK5DDIqK23BQULoPy7Gng-po",
+    "",
+  privateKey: "",
 };
 webPush.setVapidDetails(
-  "mailto:kenta14819@gmail.com",
+  "",
   vapidKeys.publicKey,
   vapidKeys.privateKey,
 );
